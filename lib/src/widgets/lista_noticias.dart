@@ -105,12 +105,19 @@ class _TarjetaImagen extends StatelessWidget {
           bottomRight: Radius.circular(50),
         ),
         child: Container(
-          child: noticia.urlToImage != null
-              ? FadeInImage(
+          child: noticia.urlToImage == null
+              ? const Image(image: AssetImage('assets/img/no-image.png'))
+              : FadeInImage(
                   placeholder: const AssetImage('assets/img/giphy.gif'),
-                  image: NetworkImage("${noticia.urlToImage}"),
-                )
-              : const Image(image: AssetImage('assets/img/no-image.png')),
+                  image: NetworkImage(noticia.urlToImage!),
+                ),
+
+          // noticia.urlToImage != null
+          //     ? FadeInImage(
+          //         placeholder: const AssetImage('assets/img/giphy.gif'),
+          //         image: NetworkImage("${noticia.urlToImage}"),
+          //       )
+          //     : const Image(image: AssetImage('assets/img/no-image.png')),
         ),
       ),
     );
